@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368.27 220.48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231f20;
+        font-family: Poppins-Thin, Poppins;
+        font-size: 64px;
+        font-weight: 200;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #00aeef;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        ;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path class="cls-2" d="M63.05,213.12c-9.11-5.55-52.68-33.3-60-82.61C-7.45,59.82,63.93-5.4,83.92,2.68c18.11,7.33,10.73,81.58,0,126.09-4.01,16.66-9.11,31.7-7.83,32.17,4.19,1.56,59.17-158.21,76.52-153.91,19.13,4.74-23.74,205.01-.87,211.3,10.44,2.87,30.96-35.7,53.04-86.09"/>
+    <text class="cls-1" transform="translate(204.79 150.68)"><tspan x="0" y="0">ovies</tspan></text>
+  </g>
+</svg>

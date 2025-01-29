@@ -1,0 +1,330 @@
+body {
+  margin: 0;
+  font-family: "Open sans",-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.navbar{
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.navbar input[type="text"]{
+  font-size: 20;
+}
+
+.movies{
+  width: 100%;
+  background:linear-gradient(45deg, blue, lightblue);
+  height: 10vh; 
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  padding: 2em 0;
+}
+
+.movies-logo{
+  max-height: 10vh;
+  max-width: 20vh;
+  padding: 10px;
+}
+
+.btn-Show-more{
+
+}
+.description-box{
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  position: relative;
+}
+.search-bar{
+  width: 300px;
+  font-size: 1.5em;
+  padding: .2em;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.select-movie-box{
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: #323136;
+  color: #fff;
+  box-shadow: 0 0 10px 1px #000;
+  justify-self: center;
+  min-width: 100%;
+}
+.movie-details-box{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: .5em 1.6em;
+  justify-content: space-between;
+}
+.select-movie-details-box{
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+}
+.search-btn{
+    width: 40px;
+    height: 40px;
+    background-image: url('../public/SVG/searchBtn.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.search-btn:hover{
+  background-color: rgb(199, 129, 129);
+}
+
+.position-abs{
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  height: 40px;
+}
+.dark{
+  background: linear-gradient(45deg, #111, #333);
+  color: white;
+}
+.dark-movie-box{
+  background-color: #111;
+}
+.dark-text{
+  color:white;
+}
+.light{
+  color:black;
+}
+.light-text{
+  color: black;
+}
+.circle-holder{
+  width: 7vh;
+  height: 4.75vh;
+  background-color: black;
+  border-radius: 5em;
+  padding: 0 .3em;
+  padding-top: 8px;
+  transition: .3s ease;
+  position: relative;
+}
+.flex{
+  display:flex;
+  flex-direction: column;
+}
+.text-white{
+  color: white;
+}
+.circle{
+  width: 3.5vh;
+  height: 3.5vh; 
+  background-color: white;
+  border-radius: 100%;
+  cursor: pointer;
+  position: absolute;
+  top: 0.35em;
+}
+.movie-lists{
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  gap: 1em;
+  min-height: 70vh;
+}
+.movie-display{
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  gap: 1em;
+}
+.movie-wrapper{
+  width: 700px;
+  border-radius: 10px;
+  padding: 1em;
+  background-color: rgba(200, 200, 200, .5);
+  height: fit-content;
+}
+.movie-box{
+  border-radius: 10px;
+  height: fit-content;
+  position: relative;
+  padding: 1em;
+  display: flex;
+  gap: 1em;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 0 4px;
+}
+.movie-box:hover{
+  background: #3122b3;
+  color: white;  
+}
+.movie-box-plot{
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: auto;
+  gap:3em;
+  height: 100%;
+}
+
+.ratings-list{
+  list-style: none;
+}
+
+.movie-box-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+.movie-box img{
+  border-radius: 10px;
+}
+.ex-mark{
+  position: absolute;
+  width: 100%;
+}
+
+.ex-mark::after{
+  content: url("/public/SVG/deleteBtn.svg");
+  position: absolute;
+  right: 30px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.text-no-wrap{
+  white-space: nowrap;       /* Prevent text from wrapping to a new line */
+  overflow: hidden;          /* Hide any content that overflows */
+  text-overflow: ellipsis;
+}
+.text-wrap{
+  white-space: wrap;
+  justify-self: center;
+}
+.star-container{
+  width: 100%;
+  height: 20px;
+  margin: 0;
+}
+.star-container svg{
+  height: 20px;
+}
+
+.dark-mode-background{
+  background: #333;
+}
+.star-rating {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Ensures all stars fit inside the container */
+  display: flex;
+  gap: .5em;
+}
+.padding-p5{
+  padding: .5em;
+}
+.stars {
+  display: inline-block;
+  mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 10"%3E...populate%a well`star_icons,/TRUSTIFUL')
+  }
+  /* .circle-right{
+  width: 4vh;
+  height: 4vh; 
+  background-color: white;
+  border-radius: 100%;
+  cursor: pointer;
+  justify-self: right;
+} */
+
+.footer-display{
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+}
+.footer-text{
+  font-size: 2em;
+  font-family: 'Poppins';
+}
+.copyright{
+  font-size: .7em;
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+  bottom: 1em;
+}
+
+.add-movie-btn{
+  transition:.3s ease;
+  height:40px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-size: 1em;
+  width: 100%;
+  bottom: 20px;
+  left: 20px;
+  left: 0;
+}
+.back-btn{
+  position: absolute;
+  cursor: pointer;
+  background-color: white;
+  padding: .2em;
+  color: black;
+  font-size: 2em;
+  line-height: 10px;
+  width:50px;
+  height: 50px;
+  padding: .36em;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn:hover svg{
+  fill:#3122b3;
+}
+
+.add-movie-btn:hover{
+  background:radial-gradient(rgb(152, 233, 60),rgb(68, 151, 1)) ;
+  color: white;
+}
+.add-movie-btn:hover::after{
+  content: '+';
+}

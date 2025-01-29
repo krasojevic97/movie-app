@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 257 249.83">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 6px;
+      }
+
+      .cls-2 {
+        fill: url(#Golden_Ring);
+      }
+    </style>
+    <radialGradient id="Golden_Ring" data-name="Golden Ring" cx="128.5" cy="124.92" fx="128.5" fy="124.92" r="126.72" gradientUnits="userSpaceOnUse">
+      <stop offset=".74" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".76" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".77" stop-color="#fff" stop-opacity=".04"/>
+      <stop offset=".79" stop-color="#fff" stop-opacity=".1"/>
+      <stop offset=".79" stop-color="#fff" stop-opacity=".18"/>
+      <stop offset=".8" stop-color="#fff" stop-opacity=".28"/>
+      <stop offset=".81" stop-color="#fff" stop-opacity=".4"/>
+      <stop offset=".82" stop-color="#fff" stop-opacity=".5"/>
+      <stop offset=".82" stop-color="#dbc01f"/>
+      <stop offset=".83" stop-color="#f1dc3a"/>
+      <stop offset=".84" stop-color="#f5e13f"/>
+      <stop offset=".84" stop-color="#dbc01f"/>
+      <stop offset=".85" stop-color="#e1ca45"/>
+      <stop offset=".87" stop-color="#e9d876"/>
+      <stop offset=".89" stop-color="#efe4a0"/>
+      <stop offset=".91" stop-color="#f5eec2"/>
+      <stop offset=".93" stop-color="#f9f5dd"/>
+      <stop offset=".95" stop-color="#fcfaf0"/>
+      <stop offset=".98" stop-color="#fefdfb"/>
+      <stop offset="1" stop-color="#fff"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <ellipse class="cls-2" cx="128.5" cy="124.92" rx="128.5" ry="124.92"/>
+    <g>
+      <polygon class="cls-1" points="38.66 125.17 100.67 89.36 100.67 160.97 38.66 125.17"/>
+      <path class="cls-1" d="M97.67,94.56v61.22l-53.01-30.61,53.01-30.61M103.67,84.17l-71.01,41,71.01,41v-82h0Z"/>
+    </g>
+    <path class="cls-3" d="M40,125.17h176c1.33,0-2.66,0-4,0"/>
+  </g>
+</svg>
