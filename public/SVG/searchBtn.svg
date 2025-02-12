@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73 73">
   <defs>
-    <style>
-      .cls-1 {
-        stroke-width: 4px;
-      }
-
-      .cls-1, .cls-2 {
-        fill: none;
-        stroke: #000;
-        stroke-miterlimit: 10;
-      }
-
-      .cls-3 {
-        stroke-width: 0px;
-      }
-    </style>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
     <g>
-      <rect class="cls-2" x=".5" y=".5" width="72" height="72" rx="8.94" ry="8.94"/>
-      <path class="cls-3" d="M28,16c6.62,0,12,5.38,12,12s-5.38,12-12,12-12-5.38-12-12,5.38-12,12-12M28,12c-8.84,0-16,7.16-16,16s7.16,16,16,16,16-7.16,16-16-7.16-16-16-16h0Z"/>
-      <line class="cls-2" x1="39" y1="39" x2="57" y2="57"/>
-      <path class="cls-1" d="M40.67,41l19.33,19.93-19.33-19.93Z"/>
+      <path stroke-width="0px" d="M28,16c6.62,0,12,5.38,12,12s-5.38,12-12,12-12-5.38-12-12,5.38-12,12-12M28,12c-8.84,0-16,7.16-16,16s7.16,16,16,16,16-7.16,16-16-7.16-16-16-16h0Z"/>
+      <line fill="none" stroke="#000" stroke-miterlimit="10" x1="39" y1="39" x2="57" y2="57"/>
+      <path fill="none" stroke="#000" stroke-miterlimit="10" d="M40.67,41l19.33,19.93-19.33-19.93Z"/>
     </g>
   </g>
 </svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427 537.18">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: .6;
+      }
+
+      .cls-1, .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: #4a87ff;
+        fill-rule: evenodd;
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #3487ff;
+        font-family: OpenSans-Light, 'Open Sans';
+        font-size: 127px;
+        font-weight: 300;
+        stroke: #3487ff;
+        stroke-miterlimit: 10;
+        stroke-width: 9px;
+      }
+
+      .cls-2 {
+        opacity: .3;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-1" d="M53.38,37.27h320.25c9.83,0,17.79,8.34,17.79,18.63v18.63H35.58v-18.63c0-10.29,7.97-18.63,17.79-18.63Z"/>
+        <path class="cls-2" d="M88.96,0h249.08c9.83,0,17.79,8.34,17.79,18.63v18.63H71.17v-18.63c0-10.29,7.97-18.63,17.79-18.63Z"/>
+        <path class="cls-3" d="M17.79,74.54h391.42c9.83,0,17.79,8.34,17.79,18.63v279.52c0,10.29-7.97,18.63-17.79,18.63H17.79c-9.83,0-17.79-8.34-17.79-18.63V93.17c0-10.29,7.97-18.63,17.79-18.63ZM17.79,111.81v55.9h53.37v-55.9H17.79ZM17.79,204.98v55.9h53.37v-55.9H17.79ZM17.79,298.16v55.9h53.37v-55.9H17.79ZM355.83,111.81v55.9h53.38v-55.9h-53.38ZM355.83,204.98v55.9h53.38v-55.9h-53.38ZM355.83,298.16v55.9h53.38v-55.9h-53.38Z"/>
+      </g>
+      <text class="cls-4" transform="translate(13 498.63)"><tspan x="0" y="0">Movies</tspan></text>
+    </g>
+  </g>
+</svg>

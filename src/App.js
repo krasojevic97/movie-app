@@ -10,6 +10,7 @@ import MovieDetails from './components/movieDetails';
 import Loading from './components/loading';
 import ErrorMessage from './components/errorMessage';
 import WatchedMovie from './components/watchedMovie';
+import TopRatedMovies from './components/topRatedMovies';
 
 
 
@@ -82,6 +83,7 @@ function App(){
     return (
       <div className={`background ${nightMode ? "dark": "light"}`}>
         <NavigationMenu query={query} setQuery={setQuery} setNightMode={setNightMode} nightMode={nightMode} setClicked={setClicked}/> 
+        <TopRatedMovies KEY={KEY} nightMode={nightMode}/>
         <SectionFlex>
         <Box nightMode={nightMode}>
             {isLoading && <Loading />}
@@ -125,7 +127,7 @@ function App(){
           )}
         </Box> 
       </SectionFlex>
-          <Footer queriedMovies={queriedMovies} watched={watched}/>
+          <Footer queriedMovies={queriedMovies} nightMode={nightMode} watched={watched}/>
       </div>
       )
 }
