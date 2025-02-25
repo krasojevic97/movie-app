@@ -14,7 +14,6 @@ import TopRatedMovies from './components/topRatedMovies';
 
 function App(){
   const [selectedMovieId, setSelectedMovieId] = useState(null);
-  const [clicked, setClicked] = useState(false)
   const [query, setQuery] = useState("");
   const [nightMode, setNightMode] = useState(false);
   const [queriedMovies,setQueriedMovies] = useState([]);
@@ -25,13 +24,9 @@ function App(){
   const [totalResults, setTotalResults] = useState(0);
   const [watchedMovies,setWatchedMovies] = useState([])
   const [refreshWatched, setRefreshWatched] = useState(false);
-  const [searchSubmitted, setSearchSubmitted] = useState(false);
   
   const KEY="2581274b";
   
-  const toggleNightMode = () =>{
-    setNightMode(prev => !prev)
-  }
   const handleDelete = async (id) => {
     try{
       const response =  await fetch(`http://localhost:5000/api/movies/${id}`,{
@@ -61,7 +56,7 @@ function App(){
   const handleClicked  = () => {
     if(query){
       setCurrentPage(1);
-      setClicked(true);
+      
     }
   }
 
@@ -94,14 +89,12 @@ function App(){
   const loadNextPage = () => {
     if (queriedMovies.length < totalResults) {
       setCurrentPage(prev => prev + 1);
-      setSearchSubmitted(true);
     }
   };
 
   const loadPreviousPage = () =>{
     if(currentPage>1){
       setCurrentPage(prev => prev-1);
-      setSearchSubmitted(true);
     }
   }
 
@@ -133,7 +126,6 @@ function App(){
         }
       } finally {
         setIsLoading(false);
-        setClicked(false);
       }
     }
   

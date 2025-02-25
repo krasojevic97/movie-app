@@ -21,7 +21,7 @@ function readData() {
   }
   
   const data = fs.readFileSync(dataFilePath, "utf-8");
-  const parsedData = JSON.parse(data);
+  const parsedData = JSON.parse(data); 
 
   if (!Array.isArray(parsedData.watchedMovies)) {
     throw new Error("watchedMovies should be an array of movie objects.");
@@ -62,7 +62,6 @@ function writeData(movies) {
 
 // POST endpoint to save movie data
 app.post("/api/movies", (req, res) => {
-
     const newMovie = req.body; // Get the movie data from the request body
     if (!newMovie) {
       return res.status(400).json({ error: "No movie data provided" });

@@ -1,9 +1,10 @@
 import {useState,useEffect} from 'react';
 
-function NavigationMenu({query,setQuery,nightMode,setMovies,setClicked,setNightMode,
+function NavigationMenu({query,setQuery,nightMode,setMovies,setNightMode,
     setCurrentPage}){
     const [input, setInput] = useState("");
-    useEffect(() => {
+   
+      useEffect(() => {
         setInput(query);
       }, [query]);
     
@@ -11,7 +12,6 @@ function NavigationMenu({query,setQuery,nightMode,setMovies,setClicked,setNightM
         if (input.trim()) {
           setQuery(input);
           setCurrentPage(1);
-          setClicked(true);
         }
       };
     
@@ -21,23 +21,6 @@ function NavigationMenu({query,setQuery,nightMode,setMovies,setClicked,setNightM
         }
       };
     
-   
-    // const handleSearch = async () => {
-    //     const apiKey = 'your_api_key'; // Replace with your API key
-    //     const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(query)}`;
-    //     try {
-    //       const response = await fetch(url);
-    //       const data = await response.json();
-    //       if (data.Response === "True") {
-    //         return data.Search;
-    //       } else {
-    //         console.error(data.Error);
-    //         return [];
-    //       }
-    //     } catch (error) {
-    //       console.error("Error fetching movies:", error);
-    //     }
-    //   };
     return (
         <nav className={`navbar ${nightMode ? `dark`:``}`}>
             <img src="SVG/movies-logo.svg" alt="moviesLogo" className="movies-logo"/>
