@@ -19,11 +19,8 @@ export default function Box({children, nightMode}){
     }
 
     return (
-        <section className={`movie-wrapper ${nightMode ? "dark-mode-background":""}`}>
-            <div style={{width:"100%",textAlign:"right"}}>
-             <img  style={buttonStyle} onClick={()=>handleToggle()} src={isOpen ? "/SVG/minusBtn.svg":"/SVG/plusBtn.svg"}/>
-             </div>
-            {isOpen && children}
+        <section className={`movie-wrapper ${nightMode ? "dark-mode-background":""}`}>  
+           {children}
         </section>
     )
 }

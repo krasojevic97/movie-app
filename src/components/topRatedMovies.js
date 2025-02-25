@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 import TopRatedMovie from './topRatedMovie'
-import Carousel from 'react-multi-carousel';
+import Carousel from './Slider';
 
-export default function TopRatedMovies({KEY,topRatedMovies,nightMode}){
+export default function TopRatedMovies({KEY,setSelectedMovie,nightMode}){
     const [topMovies, setTopMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -73,31 +73,17 @@ export default function TopRatedMovies({KEY,topRatedMovies,nightMode}){
     fetchTopMovies();
     },[KEY]);
 
-    if (isLoading) return <div>Loading top rated movies...</div>;
+    if (isLoading) return <div className="loading-top-rated">Loading top rated movies...</div>;
     if (error) return <div><img src='/images/Error'/>{error}</div>;
     return (
           <div className={`${nightMode? "dark": ""} top-rated-container`}>
-            <h2>Top Rated Movies</h2>
-            <Carousel
-                responsive={responsive}
-                infinite={true}
-                autoPlay={true}
-                autoPlaySpeed={3000}
-                keyBoardControl={true}
-                customTransition="all .5s"
-                transitionDuration={500}
-                containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px"
-                prevArrow={<></>}
-                nextArrow={<></>}
-            >
-            <div className="top-rated-movies">
+            <h2 className="top-rated-title">Top Rated Movies</h2>
+            <Carousel>
+           
                 {topMovies.map(movie => (
-                    <TopRatedMovie movie={movie} nightMode={nightMode}></TopRatedMovie>
+                    <TopRatedMovie key={movie.imdbID} movie={movie} nightMode={nightMode} setSelectedMovie={setSelectedMovie}></TopRatedMovie>
                 ))}
-            </div>
+            
             </Carousel>
         </div>
     )

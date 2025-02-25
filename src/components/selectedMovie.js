@@ -1,4 +1,4 @@
-import StarRating from "./StarRating";
+import StarRating from "./starRating";
 import {useState,useEffect} from 'react';
 import TextExpander from "./textExtender";
 import Duration from './duration';
@@ -7,7 +7,7 @@ import Actors from './cast';
 import Ratings from './rating'
 import Year from './year'
 
-export default function MovieDetails({selectedMovieId,handleAddWatched,setSelectedMovie,KEY}){
+export default function SelectedMovie({selectedMovieId,handleAddWatched,setSelectedMovie,KEY}){
     const [movie,setMovie] = useState({})
     const [userRating, setUserRating] = useState("");
 
@@ -33,7 +33,7 @@ export default function MovieDetails({selectedMovieId,handleAddWatched,setSelect
             title,
             year,
             poster,
-            imdbRating: Number(imdbRating),
+            imdbRating,
             runtime,
             plot,
             released,
@@ -54,12 +54,12 @@ export default function MovieDetails({selectedMovieId,handleAddWatched,setSelect
             setMovie(data);
             }
             catch(err){
-                
+                console.log(err)
             }
         }
         getMovieDetails();
     }
-    ,[selectedMovieId]);
+    ,[selectedMovieId,KEY]);
 
     useEffect(() => {
         if (!title) return; 
@@ -82,15 +82,16 @@ export default function MovieDetails({selectedMovieId,handleAddWatched,setSelect
         };
     }, [setSelectedMovie]);
 
-    if (!movie.imdbID) return <div>Loading...</div>; 
+    if (!movie.imdbID) return <div className="loading-movie">Loading...</div>; 
     
     const imgStyle = {
         height:"400px",
         borderRadius:"10px",
         boxShadow:"0 0 10px",
     }
-
+    console.log(movie)
     return (
+        
         <div className="select-movie-box">
             <div className="select-movie-details-box">
                 <div className="position-abs" onClick={()=>setSelectedMovie(null)}>
@@ -110,7 +111,7 @@ export default function MovieDetails({selectedMovieId,handleAddWatched,setSelect
             <div className="movie-box-plot">
                <StarRating maxRating={10} movie={movie} onChange={setUserRating} userRating={userRating}/>  
                <em><TextExpander textLength={20}>{plot}</TextExpander></em>
-                <button className="add-movie-btn" onClick={()=>handleAdd(movie)}>Add to List</button> {/* If movie includes that selected id the button will not appear*/ }
+                <button className="add-movie-btn" onClick={()=>handleAdd()}>Add to List</button> {/* If movie includes that selected id the button will not appear*/ }
             </div>
         </div>     
     )

@@ -2,18 +2,18 @@ import Duration from './duration';
 import Year from './year';
 import Type from './type';
 
-export default function WatchedMovie({movie,nightMode,handleDelete}){
+export default function WatchedMovie({movie,nightMode,handleDelete,setSelectedMovie}){
+  
     return (
-      <div className={`movie-box ${nightMode ? "dark-movie-box":"light"}`} style={{zIndex:"999"}}>
-     <div className="ex-mark" onClick={()=>handleDelete(movie.imdbID)}></div> 
+      <div className={`movie-box ${nightMode ? "dark-movie-box":"light"}`} style={{zIndex:"999"}} onClick={()=>setSelectedMovie(movie.imdbID)}>
+        <div className="ex-mark" onClick={()=>handleDelete(movie.imdbID)}></div> 
         <img style={{width:"50px"}} src={movie.poster} alt="Poster"></img>
         <div className={`movie-box-info ${nightMode ? "dark-text" :".light-text"}`}>
           <h4 className='text-no-wrap'>{movie.title}</h4>
           {movie.year && <Year year={movie.rear}/>}
-          {movie.imdbRating && <Rating title={movie.userRating ? "Personal Rating":"Rating"} rating={movie.userRating || movie.imdbRating} />}
+          <Rating title={movie.userRating ? "Personal Rating":"Rating"} rating={movie.userRating>0 ? movie.userRating : movie.imdbRating} />
           {movie.runtime &&<Duration duration={movie.runtime}/>}
           {movie.type && <Type type={movie.type}/> }
-          {/* {movie.personalRating>0 && <Rating title={"Personal rating"} rating={movie.personalRating} />} */}
         </div>
       </div>
     ) 

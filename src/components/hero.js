@@ -1,4 +1,4 @@
-function Hero({nightMode}){
+export default function Hero({nightMode}){
     return (
 <div className={`hero ${nightMode?`dark`:``}`}>
         <h1 className="welcome-text">Welcome to my website!</h1>

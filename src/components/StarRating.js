@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import Star from './star';
 
-export default function StarRating({maxRating=5, movie, color="yellow",onChange,userRating}){
+export default function StarRating({maxRating=5, movie, color="yellow",onChange ,userRating}){
     const [hovered, setHovered] = useState(0);
     
     const containerStyle = {
@@ -27,14 +27,14 @@ export default function StarRating({maxRating=5, movie, color="yellow",onChange,
     return <div>
         <div style={containerStyle}>
             <div style={starContainerStyle}>
-                Rate:{Array.from({length : maxRating},(_,i)=><span><Star key={i} 
+                Rate:{Array.from({length : maxRating},(_,i)=><span key={i}><Star 
                                                                          color={color} 
                                                                          full={i < (movie.imdbRating && hovered ? (userRating < hovered ? hovered : userRating) : (userRating || movie.imdbRating))} 
                                                                          onHover={() => setHovered(i + 1)} 
                                                                          onLeave={() => setHovered(0)}
                                                                          onClick={() => handleRating(i + 1)}/></span>)}
             </div>
-            <p style={textStyle}>{userRating>0 ? userRating : movie.imdbRating}</p>
+            <p style={textStyle}>{userRating > 0 ? userRating : movie.imdbRating}</p>
         </div>
     </div>
 }

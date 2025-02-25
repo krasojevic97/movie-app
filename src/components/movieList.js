@@ -1,6 +1,5 @@
 
-function MovieList({children,title}){
-    
+function MovieList({children,title}){    
     return (    
             <div className={`movie-display`}>
                 <h1>{title}</h1>
