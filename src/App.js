@@ -22,9 +22,16 @@ function App(){
   const [movies,setMovies] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [watchedMovies,setWatchedMovies] = useState([])
-  const [refreshWatched, setRefreshWatched] = useState(false);
-  
+  const [watchedMovies,setWatchedMovies] = useState(async function () {
+    const response = await fetch("http://localhost:5000/api/movies",{
+      method:"GET",
+      headers: {
+      "Content-Type": "application/json",
+      },
+    });
+    return response.json();
+  });
+  const [changed, setChanged] = useState(false);
   const KEY="2581274b";
   
   const handleDelete = async (id) => {
@@ -42,10 +49,11 @@ function App(){
       
       const data = await response.json();
       console.log(data.message);
-      setRefreshWatched(prev => !prev);
 
     }catch (error){
       console.error("Error saving movie: ",error)
+    }finally{
+      setChanged(prev=>!prev);
     }
   }
   
@@ -56,8 +64,17 @@ function App(){
   const handleClicked  = () => {
     if(query){
       setCurrentPage(1);
-      
     }
+  }
+
+
+  const reload = async () => {
+    const response = await fetch("http://localhost:5000/api/movies",{
+      method:"GET",
+      headers: {
+      "Content-Type": "application/json",
+      },
+    }).then(data=>console.log(data.json()));
   }
 
 
@@ -70,21 +87,17 @@ function App(){
             body: JSON.stringify(movie), // Send the movie object as JSON
           });
           if(responsePost.ok){
-            setRefreshWatched(true);
+            const movie = responsePost.json();
+            if(!watchedMovies.includes(movie))
+              setWatchedMovies((prev)=>[...prev,movie]);
+            else
+              console.error("Movie already exists!")
           }else if(!responsePost.ok) {
             throw new Error("Failed to save movie to the server")
           }
+          setChanged(prev=>!prev)
   }
-  
-  const handleGetLength = async () =>{
-      const res = await fetch("http://localhost:5000/api/movies",{
-        method:'GET'
-      });
-      if(res.ok){
-        const data = res.data.length;
-        return data;
-      }
-  }
+
 
   const loadNextPage = () => {
     if (queriedMovies.length < totalResults) {
@@ -126,6 +139,7 @@ function App(){
         }
       } finally {
         setIsLoading(false);
+        setChanged(prev=>!prev)
       }
     }
   
@@ -155,11 +169,10 @@ function App(){
             setError(err.message);
         } finally {
             setIsLoading(false);
-            setRefreshWatched(false);
         }
     }
     fetchWatchedMovies();
- },[refreshWatched])
+ },[changed])
 
     return (
       <div className={`background ${nightMode ? "dark": "light"}`}>
@@ -172,57 +185,57 @@ function App(){
         setCurrentPage={setCurrentPage}/>  
         <TopRatedMovies KEY={KEY} nightMode={nightMode} setSelectedMovie={handleSelectMovie}/>
         <SectionFlex>
-  {selectedMovieId ? (
-    <SelectedMovie
-      document={document}
-      KEY={KEY}
-      selectedMovieId={selectedMovieId}
-      setSelectedMovie={handleSelectMovie}
-      handleAddWatched={handleAddWatched}
-    />
-  ) : movies === "All" ? (
-    <Box nightMode={nightMode}>
-      {isLoading && <Loading />}
-      {error && <ErrorMessage message={error} />}
-      {!isLoading && !error && (
-        <MovieList nightMode={nightMode} title="All movies">
-          {queriedMovies?.map((movie) => (
-            <Movie
+          {selectedMovieId ? (
+            <SelectedMovie
+              document={document}
+              KEY={KEY}
+              selectedMovieId={selectedMovieId}
               setSelectedMovie={handleSelectMovie}
-              key={movie.imdbID}
-              movie={movie}
-              nightMode={nightMode}
-              handleDelete={handleDelete}
+              handleAddWatched={handleAddWatched}
             />
-          ))}
-          {!isLoading && queriedMovies.length > 0 && queriedMovies.length < totalResults && (
-            <div className="load-buttons">
-             {currentPage!==1 && <button onClick={()=>loadPreviousPage()}>
-                Load Previous
-              </button>}
-              <button onClick={()=>loadNextPage()}>
-              Load Next 
-              </button>
-            </div>
-          )}
-        </MovieList>
-      )}
-    </Box>
-  ) : movies === "Watched" ? (
-    <Box nightMode={nightMode}>
-      <MovieList nightMode={nightMode} title="Watched movies">
-                  {watchedMovies.length === 0 ? (
-                      <p>No movies watched yet!</p>
-                  ) : (
-                          watchedMovies.map((movie)=>(
-                              <WatchedMovie  setSelectedMovie={handleSelectMovie} movie={movie} handleDelete={handleDelete} key={movie.imdbID} nightMode={nightMode}></WatchedMovie>
-                          ))
+          ) : movies === "All" ? (
+            <Box nightMode={nightMode}>
+              {isLoading && <Loading />}
+              {error && <ErrorMessage message={error} />}
+              {!isLoading && !error && (
+                <MovieList nightMode={nightMode} title="All movies">
+                  {queriedMovies?.map((movie) => (
+                    <Movie
+                      setSelectedMovie={handleSelectMovie}
+                      key={movie.imdbID}
+                      movie={movie}
+                      nightMode={nightMode}
+                      handleDelete={handleDelete}
+                    />
+                  ))}
+                  {!isLoading && queriedMovies.length > 0 && queriedMovies.length < totalResults && (
+                    <div className="load-buttons">
+                    {currentPage!==1 && <button onClick={()=>loadPreviousPage()}>
+                        Load Previous
+                      </button>}
+                      <button onClick={()=>loadNextPage()}>
+                      Load Next 
+                      </button>
+                    </div>
                   )}
-                  </MovieList>
-      </Box>
-  ) : null}
-  </SectionFlex>
-          <Footer queriedMovies={totalResults} nightMode={nightMode} watched={handleGetLength}/>
+                </MovieList>
+              )}
+            </Box>
+          ) : movies === "Watched" ? (
+            <Box nightMode={nightMode}>
+              <MovieList nightMode={nightMode} title="Watched movies">
+                          {watchedMovies.length === 0 ? (
+                              <p>No movies watched yet!</p>
+                          ) : (
+                                  watchedMovies.filter((movie)=>movie?.title?.toLowerCase().includes(query)).map((movie)=>(
+                                      <WatchedMovie  setSelectedMovie={handleSelectMovie} movie={movie} handleDelete={handleDelete} key={movie.imdbID} nightMode={nightMode}></WatchedMovie>
+                                  ))
+                          )}
+                          </MovieList>
+              </Box>
+          ) : null}
+        </SectionFlex>
+        <Footer queriedMovies={totalResults} nightMode={nightMode} watched={watchedMovies}/>
       </div>
       )
 }

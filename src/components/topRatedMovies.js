@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react';
 import TopRatedMovie from './topRatedMovie'
 import Carousel from './Slider';
-
+import ErrorMessage from './errorMessage';
 export default function TopRatedMovies({KEY,setSelectedMovie,nightMode}){
     const [topMovies, setTopMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+
 
     const topMovieIds = [ 'tt0111161', // The Shawshank Redemption
     'tt0068646', // The Godfather
@@ -64,7 +65,7 @@ export default function TopRatedMovies({KEY,setSelectedMovie,nightMode}){
 
             setTopMovies(sortedMovies);
         } catch (err) {
-            setError('Error loading top movies');
+            setError('Error loading top rated movies');
         } finally {
             setIsLoading(false);
         }
@@ -74,7 +75,7 @@ export default function TopRatedMovies({KEY,setSelectedMovie,nightMode}){
     },[KEY]);
 
     if (isLoading) return <div className="loading-top-rated">Loading top rated movies...</div>;
-    if (error) return <div><img src='/images/Error'/>{error}</div>;
+    if (error) return <ErrorMessage message={error}/>;
     return (
           <div className={`${nightMode? "dark": ""} top-rated-container`}>
             <h2 className="top-rated-title">Top Rated Movies</h2>

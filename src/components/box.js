@@ -13,6 +13,7 @@ export default function Box({children, nightMode}){
                 right:'20px',
                 cursor:'pointer'
     }
+    
     const [isOpen, setIsOpen] = useState(true);
     const handleToggle = () => {
         setIsOpen(!isOpen);

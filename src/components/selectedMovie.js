@@ -1,5 +1,5 @@
 import StarRating from "./starRating";
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useRef} from 'react';
 import TextExpander from "./textExtender";
 import Duration from './duration';
 import Type from './type'
@@ -10,6 +10,14 @@ import Year from './year'
 export default function SelectedMovie({selectedMovieId,handleAddWatched,setSelectedMovie,KEY}){
     const [movie,setMovie] = useState({})
     const [userRating, setUserRating] = useState("");
+    const countRef = useRef(0);
+
+
+    useEffect(function() {
+        if(userRating){
+            countRef.current = countRef.current+1;
+        }
+    },[userRating])
 
     const {
         Title:title="",

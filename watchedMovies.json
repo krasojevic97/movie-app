@@ -1,3 +1,32 @@
 {
-  "watchedMovies": []
+  "watchedMovies": [
+    {
+      "imdbID": "tt0068646",
+      "title": "The Godfather",
+      "year": "1972",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_SX300.jpg",
+      "imdbRating": "9.2",
+      "runtime": "175 min",
+      "plot": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "released": "24 Mar 1972",
+      "actors": "Marlon Brando, Al Pacino, James Caan",
+      "director": "Francis Ford Coppola",
+      "genre": "Crime, Drama",
+      "userRating": ""
+    },
+    {
+      "imdbID": "tt0050083",
+      "title": "12 Angry Men",
+      "year": "1957",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYjE4NzdmOTYtYjc5Yi00YzBiLWEzNDEtNTgxZGQ2MWVkN2NiXkEyXkFqcGc@._V1_SX300.jpg",
+      "imdbRating": "9.0",
+      "runtime": "96 min",
+      "plot": "The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.",
+      "released": "10 Apr 1957",
+      "actors": "Henry Fonda, Lee J. Cobb, Martin Balsam",
+      "director": "Sidney Lumet",
+      "genre": "Crime, Drama",
+      "userRating": ""
+    }
+  ]
 }

@@ -23,6 +23,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media (max-width: 1250px){
+  .navbar{
+    height: fit-content;
+  }
+  .burger-menu{
+    display: block;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+  }
+  .burger-menu::before{
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    background-color: white;
+    top: 5px;
+    left: 0;
+  }
+  .burger-menu::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    background-color: white;
+    bottom: 5px;
+  }
+  .burger-button{
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: relative;
+  }
+  .movie-links{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    padding: 1em;
+    top: 0;
+    justify-content: center;
+    background-color: var(--champagne);
+    height: 100%;
+    width: 200px;
+    z-index: 1000;
+  }
+  .circle-holder{
+    width: 100%;
+  }
+  .toggle-menu-mobile-btn{
+    display: block;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+  .toggle-menu-mobile-btn::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    transform: rotate(45deg);
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+  }
+  .toggle-menu-mobile-btn::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: rgb(0, 0, 0);
+  }
+  .toggle-menu-mobile-btn:hover::before,
+.toggle-menu-mobile-btn:hover::after {
+    background-color: white;
+}
+}
 .navbar{
   height: 10vh;
   width: 100%;
@@ -108,7 +192,6 @@ code {
   display: flex;
 }
 .search-bar-input{
-  width: 600px;
   font-size: 1.2em;
   background: transparent;
   border: none;
@@ -264,6 +347,13 @@ code {
 .ex-mark{
   position: absolute;
   width: 100%;
+  z-index: 999;
+  right: 0;
+  top: 1em;
+}
+
+.pos-rel{
+  position: relative;
 }
 
 .ex-mark::after{
@@ -519,4 +609,104 @@ code {
   display: grid;
   grid-template-columns: repeat(3,33%);
   gap: 1em;
+}
+
+.burger-menu{
+  display: none;
+}
+.burger-button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+}
+.toggle-menu-mobile-btn{
+  background-color: transparent;
+  border: none;
+  display: none;
+  position: relative;
+}
+
+@media (max-width: 1250px){
+  .navbar{
+    height: fit-content;
+  }
+  .burger-menu{
+    display: block;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+  }
+  .burger-menu::before{
+    content: '';
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    background-color: white;
+    top: 5px;
+    left: 0;
+  }
+  .burger-menu::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    background-color: white;
+    bottom: 5px;
+  }
+  .burger-button{
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: relative;
+  }
+  .movie-links{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    padding: 1em;
+    top: 0;
+    justify-content: center;
+    background-color: var(--champagne);
+    height: 100%;
+    width: 200px;
+    z-index: 1000;
+  }
+  .circle-holder{
+    width: 100%;
+  }
+  .toggle-menu-mobile-btn{
+    display: block;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+  .toggle-menu-mobile-btn::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    transform: rotate(45deg);
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+  }
+  .toggle-menu-mobile-btn::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: rgb(0, 0, 0);
+  }
+  .toggle-menu-mobile-btn:hover::before,
+.toggle-menu-mobile-btn:hover::after {
+    background-color: white;
+}
 }

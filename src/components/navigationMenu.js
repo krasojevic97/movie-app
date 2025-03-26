@@ -1,32 +1,65 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useRef} from 'react';
 
-function NavigationMenu({query,setQuery,nightMode,setMovies,setNightMode,
-    setCurrentPage}){
-    const [input, setInput] = useState("");
-   
-      useEffect(() => {
-        setInput(query);
-      }, [query]);
+function NavigationMenu({query,setQuery,nightMode,setMovies,setNightMode,setCurrentPage}){
+    const movieLinks = useRef(null)
+    const inputQuery = useRef(null);
+      
+      // useEffect(() => {
+      //   setInput(query);
+      // }, [query]);
     
+      useEffect(()=>{
+        const updateDisplay = () => {
+          if (Number(window.innerWidth.toFixed()) > 1250) {
+            movieLinks.current.style.display = 'flex';
+          } else {
+            movieLinks.current.style.display = 'none'; // Hide if width is <= 1250px
+          }
+        };
+    
+        // Call the function once to set the initial state
+        updateDisplay();
+    
+        // Add resize event listener to update on window resize
+        window.addEventListener('resize', updateDisplay);
+    
+        // Cleanup function to remove the event listener
+        return () => {
+          window.removeEventListener('resize', updateDisplay);
+        };
+      },[])
+
       const handleSearch = () => {
-        if (input.trim()) {
-          setQuery(input);
-          setCurrentPage(1);
-        }
+        console.log(inputQuery.current)
+        setQuery(inputQuery.current.value);
+        setCurrentPage(1);
       };
     
-      const handleKeyDown = (e) => {
-        if (e.key === 'Enter'|| e.key=== 'ArrowDown') {
+      const handleKeyDown = () => {
           handleSearch();
-        }
       };
+
+      const handleIfEnter = (e) =>{
+        if(e.key==="Enter"){
+          handleKeyDown();
+        }
+      }
+ 
+      const toggleMenu = () => {
+        if(movieLinks.current.style.display==="none" || !movieLinks.current.style.display){
+          movieLinks.current.style.display="flex";
+        }
+        else{
+          movieLinks.current.style.display="none"
+        };
+      }
     
     return (
         <nav className={`navbar ${nightMode ? `dark`:``}`}>
             <img src="SVG/movies-logo.svg" alt="moviesLogo" className="movies-logo"/>
             <div className={`search-bar ${nightMode ? `dark-text-and-border`:``}`}>
-                <input type="text" className={`search-bar-input ${nightMode ? `dark-text-and-border`:``}`} placeholder="Search movies..." onKeyDown={handleKeyDown} value={input} onChange={(e)=>setInput(e.target.value)}/>
-                <button onClick={()=>{handleKeyDown(input)}}  className="search-btn"><svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73 73">
+                <input type="text" className={`search-bar-input ${nightMode ? `dark-text-and-border`:``}`} placeholder="Search movies..." onSubmit={()=>handleIfEnter()} onKeyDown={(e)=>handleIfEnter(e)} ref={inputQuery} />
+                <button type="submit" onClick={()=>{handleKeyDown()}}  className="search-btn"><svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73 73">
                 <defs>
                 </defs>
                 <g id="Layer_1-2" data-name="Layer 1">
@@ -38,7 +71,8 @@ function NavigationMenu({query,setQuery,nightMode,setMovies,setNightMode,
                 </g>
                 </svg></button>
             </div>
-            <div className="movie-links">
+            <div className={`movie-links ${nightMode ? "dark":""} `} ref={movieLinks}>
+                <button className="toggle-menu-mobile-btn" onClick={()=>toggleMenu()}></button>
                 <button className="button-to-movies" onClick={()=>setMovies("All")}>All Movies</button>
                 <button className="button-to-movies" onClick={()=>setMovies("Watched")}>Watched Movies</button>
             
@@ -48,7 +82,7 @@ function NavigationMenu({query,setQuery,nightMode,setMovies,setNightMode,
                     {/* <div className={`circle-${!nightMode ? "left":"right"}`}></div> */}
                 </div>
             </div>
-           
+           <button onClick={()=>toggleMenu()} className="burger-button"><div className="burger-menu"></div></button>
         </nav> 
     )
 }
